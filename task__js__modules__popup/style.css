@@ -26,9 +26,7 @@
 	z-index: 1000;      /* 比mask层高 */
 	top: 50%;
 	left: 50%;
-	/* transform: translate(-50%, -50%);  */  /* 实现拖拽时，offsetLeft和offsetTop要分别减去元素高度的一半 */
-	margin-left: -300px;
-	margin-top: -160px;
+	transform: translate(-50%, -50%);   /* 实现拖拽时，offsetLeft和offsetTop要分别减去元素高度的一半 */
 }
 .floatLayer h2 {
 	font-size: 20px;

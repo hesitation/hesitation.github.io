@@ -52,9 +52,7 @@
 
 		// 鼠标在标题按下时，触发拖拽函数；松开时，移除拖拽函数
 		this.drag();
-		// this.dom[1].childNodes[1].addEventListener('mousedown', function (evt) {
-		// 	this.drag(evt, this.dom[1]);   // 传入触发的事件、当前悬浮层的节点对象
-		// }.bind(this), false);
+		
 	}	
 
 	// 显示弹窗
