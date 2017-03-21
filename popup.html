@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0：
+		}
+		.layer {
+			width: 300px;
+			padding: 20px;
+			background: #fff;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 3px 5px #bbb;
+			/* 在容器中水平垂直居中显示 */
+			position: absolute;    /* 弹窗是浮出层，位置是绝对定位的，不会影响原文档流 */
+			left: 50%;
+			top: 50%;      /* 相对于容器的宽度 */
+			transform: translate(-50%, -50%);  /* 相对于元素自身宽度 */
+		}
+		.layer h2 {
+			font-size: 16px;
+			border-bottom: 1px solid #ddd;
+			padding-bottom: 5px;
+			margin-bottom: 20px;
+		}
+		.layer p {
+			text-indent: 2em;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+		.layer button {
+			display: block;
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			border: 0;
+			border-radius: 5px;
+			color: #fff;
+			background: #333;
+			margin: 10px auto 0;
+			text-align: center;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		//----------------------------------------------------------------//
+		// 组件创建
+		//
+		(function () {
+			// 一个闭包
+			
+			// 弹窗组件的HTML结构：模板字符串，定制需求
+			var html = `<div class="layer">\
+							<h2>提示</h2>\
+							<p>{text}</p>\
+							<button>知道了</button>\
+						</div>`;
+
+		    // 弹窗组件构造函数
+		    function Layer(text) {      // text是对外的接口，可以定制弹窗中的内容
+		    	// 用户的定制需求：弹窗组件的参数配置
+		    	this.text = text;
+		    	// 调用初始化弹窗韩式
+		    	this.init();
+		    } 
+
+		    // 原型对象上的方法
+		    
+		    // 定义初始化弹窗的方法
+		    Layer.prototype.init = function () {
+		    	// 初始化弹窗的DOM结构
+		    	this.initDom();
+		    	// 初始化弹窗的事件
+		    	this.initEvent();
+
+		    	// this.show();   在外部制定具体控制流程
+		    }
+
+		    // 定义初始化弹窗DOM结构的方法
+		    Layer.prototype.initDom = function () {
+		    	var node = document.createElement('div');
+
+		    	// 根据配置生成弹窗内容
+		    	node.innerHTML = html.replace('{text}', this.text);
+		    	// 完成弹窗DOM结构初始化：childNodes[0]表示原来的html字符串中创建为DOM节点
+		    	this.dom = node.childNodes[0];   // div节点以及其中的内容保存下来，显示函数用于添加到页面中
+		    }
+
+		    // 初始化弹窗中的事件方法
+		    Layer.prototype.initEvent = function () {
+		    	this.dom.addEventListener('click', function (evt) {   // 在整个弹窗上注册事件，通过evt.target来获取触发事件的对象
+		    		// 如果点击了按钮
+		    		if(evt.target.tagName == 'BUTTON') {
+		    			this.hide();   //隐藏整个面板
+		    		}
+		    	}.bind(this), false);     // bind()强制绑定弹窗组件来调用回调函数
+		    }
+
+		    // 显示组件的方法：将生成的内容添加到HTML页面中
+		    Layer.prototype.show = function () {
+		    	document.body.appendChild(this.dom);   // 将创建的节点添加到页面的hook中
+		    }
+
+		    // 关闭弹窗的方法：将节点删除
+		    Layer.prototype.hide = function () {
+		    	document.body.removeChild(this.dom);
+		    }
+
+		    //----------------------------------------------------------------//
+			// 组件调用渠道：
+			// 
+			// 将构造函数返回出整个闭包，可以在外面调用构造函数生成弹窗组件
+			window.Layer = Layer;   // 挂载到全局对象，也可以使用闭包，return Layer;
+		})();
+
+		    //----------------------------------------------------------------//
+			// 组件使用：生成一个组件对象
+			var layer = new window.Layer('重要说明 百度前端技术学院的课程任务是由百度前端工程师专为对前端不同掌握程度的同学设计。我们尽力保证课程内容的质量以及学习难度的合理性，但即使如此，真正决定课程效果的，还是你的每一次思考和实践');
+
+			layer.show();   // 调用show()方法将创建的节点添加到页面上，显示弹窗
+	</script>
+</body>
+</html>
