@@ -1,0 +1,69 @@
+* {box-sizing: border-box;}
+form {
+	display: block;
+	font-size: 24px;
+	font-weight: normal;
+	margin-top: 100px;
+}
+div {
+	margin-bottom: 50px;
+}
+.input {
+	border: 1px solid #aaa;
+	border-radius: 10px;
+	height: 60px;	
+	padding: 0 18px;
+	margin: 0 2em;
+	font-size: 18px;
+}
+.input--city {
+	min-width: 280px;
+}
+.input--school {
+	min-width: 470px;
+}
+.input--company {
+	min-width: 46em;
+}
+
+.input__left {
+	width: 35%;
+	display: inline-block;
+	text-align: right;
+}
+.input:focus {
+	outline: 0;
+}
+input[type='radio'] {
+	margin: 0;
+	-webkit-appearance: none;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: #fff;
+	border: 1px solid #aaa;
+	vertical-align: middle;
+	outline: 0;
+}
+input[type='radio']:checked {
+	outline: 0;
+	border: 8px solid #08f;
+}
+option:hover {
+	background: lightblue;
+	color: #08f;
+}
+.radioBtn {
+	margin-left: 35%;
+	padding-left: 2em;
+}
+.btn__right {
+	margin-right: 12em;
+}
+
+.hide--state {
+	display: none;
+}
+.show--state {
+	display: block;
+}
