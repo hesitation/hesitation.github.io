@@ -31,7 +31,7 @@ function $ (args) {
 		// 渲染thead：根据sortSwitch判断是否需要渲染span
 		data.thead.forEach(function (value, index) {
 			if(data.sortSwitch[index] === 1) {
-				theadStr += '<th data-id="' + index + '">' + value + '<span></span></th>';
+				theadStr += '<th data-id="' + index + '">' + value + '<span class="triangle down"></span><span class="triangle up"></span></th>';
 			} else {
 				theadStr += '<th data-id="' + index + '">' + value + '</th>';
 			}
@@ -39,7 +39,12 @@ function $ (args) {
 
 		for(row in data.tbody) {
 			let eachRow = '';
+
+			// 求和
+			data.tbody[row][4] = data.tbody[row][1] + data.tbody[row][2] + data.tbody[row][3];
+
 			data.tbody[row].forEach(function (value) {
+
 				eachRow += '<td>' + value + '</td>';
 			});
 
@@ -65,9 +70,17 @@ function $ (args) {
 	Table.prototype.initEvent = function () {
 		// 直接绑定在表格上
 		this.dom.addEventListener('click', (function (evt) {
-			console.log(111)
-			if(evt.target.tagName === 'SPAN') {
+			if(evt.target.tagName === 'SPAN' && / down/g.test(evt.target.className)) {
 				this.sortDown(evt.target.parentNode.getAttribute('data-id'));
+				
+				this.initDom(); // 构造DOM节点
+				this.hide();   // 去掉之前的表格节点
+				this.show();   // 这里只是渲染界面，但是并没有绑定事件
+				this.initEvent();  // 所以需要绑定事件
+			}
+			if(evt.target.tagName === 'SPAN' && / up/g.test(evt.target.className)) {
+				this.sortUp(evt.target.parentNode.getAttribute('data-id'));
+				console.log(this.config.data)
 				
 				this.initDom(); // 构造DOM节点
 				this.hide();   // 去掉之前的表格节点
@@ -99,7 +112,7 @@ function $ (args) {
 		this.config.data.tbody = newObj;   // 返回排序后的数据
 	};
 
-		// 降序排列
+		// 升序排列
 	Table.prototype.sortUp = function (id) {
 		id = parseInt(id);
 		let tbody = this.config.data.tbody;
@@ -107,7 +120,7 @@ function $ (args) {
 		let newObj = {};
 
 		for(i in tbody) {
-			newArr.push(i[id])
+			newArr.push(tbody[i])
 		}
 		newArr.sort(function (a, b) {     // 排序方法
 			return a[id] - b[id];

@@ -16,16 +16,25 @@ body {
 	border: 1px solid #ccc;
 	text-align: center;
 }
-.table th span {
-	margin-left: 1em;
-	cursor: pointer;
-	display: inline-block;
-	vertical-align: middle;
-	width: 22px;
-	height: 37px;
-	background: url('btn.png') no-repeat;
-}
+
 .table thead tr {
 	background: #555;
 	color: #fff;
+}
+.table .triangle {
+	float: right;
+	display: inline-block;
+	height: 0;
+	border: 8px solid #ccc;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.table .up {
+	margin-top: -4px;
+	border-color: transparent transparent #ccc transparent ;
+}
+.table .down {
+	margin-top: 4px;
+	border-color:  #ccc transparent transparent transparent;
+
 }
