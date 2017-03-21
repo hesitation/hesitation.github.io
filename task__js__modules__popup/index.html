@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./task__js__modules__popup/style.css">
+	<style>
+		#start {
+			font-size: 20px;
+			line-height: 1.5;
+			width: 100px;
+			border: 0;
+			border-radius: 5px;
+			background: coral;
+			color: #fff;
+			font-weight: bold;
+			display: block;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<button id="start">提示信息</button>
+
+<!-- 	<div class="mask"></div>
+	<div class="floatLayer">
+		<h2>提示</h2>
+		<p>课程多数题目的解决方案都不是唯一的，这和我们在实际工作中的情况也是一致的。因此，我们的要求不仅仅是实现设计稿的效果，更是要多去思考不同的解决方案，评估不同方案的优劣，然后使用在该场景下最优雅的方式去实现。</p>
+		<div class="btn">
+			<button>确定</button>
+			<button>取消</button>
+		</div>
+	</div> -->
+	<script src="./task__js__modules__popup/floatLayer.js"></script>
+	<script>
+		var btn = document.getElementById('start');
+		start.addEventListener('click', function () {
+			let layer = new Layer('课程多数题目的解决方案都不是唯一的，这和我们在实际工作中的情况也是一致的');
+			layer.show();
+		});
+
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.mask {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.2);
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 100;     /* 控制堆叠顺序，浮出层显示在面板下面 */
+}
+
+.floatLayer {
+	width: 600px;
+	height: 320px;
+	background: #fff;
+	border: 1px solid #aaa;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 4px #888;
+	padding: 1em;
+	position: absolute;
+	z-index: 1000;      /* 比mask层高 */
+	top: 50%;
+	left: 50%;
+	/* transform: translate(-50%, -50%);  */  /* 实现拖拽时，offsetLeft和offsetTop要分别减去元素高度的一半 */
+	margin-left: -300px;
+	margin-top: -160px;
+}
+.floatLayer h2 {
+	font-size: 20px;
+	color:  #555;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 0.5em;
+	margin-bottom: 0.5em;
+	cursor: move;
+}
+.floatLayer p {
+	font-size: 16px;
+	text-indent: 2em;
+	line-height: 1.5;
+}
+.floatLayer .btn {
+	height: 64px;
+	line-height: 64px;
+	padding: 10px;
+	text-align: right;
+	position: absolute;
+	bottom: 1em;
+	right: 1em;
+}
+.floatLayer .btn button {
+	font-size: 16px;
+	width: 150px;
+	height: 50px;
+	background: #999;
+	color: #fff;
+	border-radius: 5px;
+}
