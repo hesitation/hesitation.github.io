@@ -1,0 +1,701 @@
+li {
+	list-style: none;
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+a:hover, a:active, a:visited, a:link {
+	color: inherit;
+}
+
+*, ::after, ::before, :hover {box-sizing: inherit;}
+html {
+	box-sizing: border-box;
+	font-size: 14px;
+}
+body {min-width: 1280px;}
+
+.clearfix::before {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	overflow: hidden;  /* 生成BFC */
+}
+
+/* header */
+.header {
+	height: 56px;
+	line-height: 56px;
+	overflow: hidden;    /*  撑开容器高度 */ 
+}
+.header-title {
+	font-weight: normal;
+	float: left;
+	margin: 0;
+}
+.header-title::before {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 31px;
+	background: url('../img/icon.png') no-repeat left 0 top 0;
+	overflow: hidden;
+	margin-left: 59px;
+	margin-right: 11px;
+	vertical-align: sub;
+}
+.header-nav {
+	float: right;
+}
+.header-nav > a {
+	float: right;
+	padding-right: 5px;
+	margin-right: 62px;
+	color: #f66;
+}
+.header-nav > a::before {   /* 插入图标 */
+	content: "";
+	display: inline-block;
+	width: 14px;
+	height: 17px;
+	background: url("../img/icon.png") no-repeat left -30px top 0;
+	margin-right: 5px;
+	vertical-align: sub;   /* 背景图位置与字体对中 */
+}
+.header-nav ul {
+	float: left;
+}
+.header-nav li {
+	float: left;
+	padding-left: 17px;
+	padding-right: 17px;
+	margin-right: 12px;
+	color: #999;
+	height: 52px;        /* 注意使用border-box时，添加	 */
+}
+.header-nav li:hover {
+	border-bottom: 4px solid #f66;
+	color: #f66;
+}
+
+
+/* --------------section-1------------------------------ */
+#section-1 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background: url('../img/bg-1.jpg') no-repeat;
+	background-color: rgba(0, 0, 0, 0.2);
+	height: 691px;
+	background-size: cover;      /* 让图片尽量覆盖容器 */
+	color: #fff;
+	padding-left: 117px;
+}
+#section-1 h2 {
+	margin: 0;
+	font-size: 60px;
+	font-family: "Arial";
+	font-weight: normal;
+}
+#section-1 p {
+	font-size: 20px;
+	line-height: 31px;
+}
+#section-1 .section1-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 330px;
+	height: 64px;
+	background: #f66;
+	color: #fff;
+	font-size: 30px;
+	margin-top: 46px;
+}
+/* 利用绝对定位实现遮罩层，这样遮罩会覆盖掉里面的按钮 */
+/* #section-1::before {   
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.2);
+}	 */
+ 
+/* --------------section-2------------------------------ */
+#section-2 {
+	height: 250px;
+	margin-bottom: 65px;
+}
+.section2-firgure {
+	margin: 0;
+	display: inline-block;
+	width: 25%;
+	height: 185px;
+	overflow: hidden;
+}
+.section2-wrap {       /* 使用包裹层来居中图片 */
+	width: 100%;
+	height: 130px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#section-2 figcaption {
+	height: 52px;
+	text-align: center;
+	line-height: 18px;
+	color:  #666;
+	border-right: 2px solid #999;
+}
+#section-2 figure:last-child figcaption {  /*  去掉最右侧的边框 */
+	border-right: none;      
+}
+
+/* --------------section-3------------------------------ */
+#section-3 {
+	height: 360px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #EDEAEA;
+}
+#section-3 h2 {
+	font-size: 54px;
+	line-height: 56px;
+	font-weight: normal;
+	color: #999;
+}
+#section-3::before {
+	content: "";
+	width: 91px;
+	height: 92px;
+	display: block;
+	background: url('../img/icon.png') left 0 top -76px;
+}
+
+/* --------------section-4------------------------------ */
+#section-4 {
+	height: 341px;
+	background: url('../img/bg-2.png') no-repeat;
+	background-size: cover;
+	color: #fff;
+	text-align: center;
+	position: relative;
+}
+#section-4 h3 {
+	margin: 0;
+	font-size: 21px;
+	line-height: 48px;
+	padding-top: 40px;
+}
+#section-4 > span {  /* 制作横线，利用绝对定位 */
+	display: block;
+	border-top: 3px solid #fff;
+	height: 40px;
+	width: 30px;
+	position: absolute;
+	top: 84px;
+	left: 50%;           /* 50%相对的是容器的宽度 */
+	transform: translateX(-50%);     /* translateX()相对的是元素自身宽度 */
+	transition: width 0.4s ease-in-out;   /* 属性值改变时，以动画的效果触发 */ 
+}
+#section-4 > span:hover {
+	width: 240px;
+}
+#section-4 > p {
+	margin: 0;
+	font-size: 12px;
+	line-height: 31px;
+}
+#section-4 > p {
+	margin: 0;
+	font-size: 12px;
+	line-height: 31px;
+}
+.section4-item {
+	margin-top: 40px;
+	display: flex;
+	justify-content: center;
+}
+.section4-item > div {
+	margin-right: 30px;	
+}
+.section4-item [type="text"] {
+	border: none;
+	box-sizing: content-box;          /* 这里很重要，否则在碰到滚动条时，页面会跳动 */
+	width: 236px;
+	height: 36px;
+	padding: 0 36px 0 11px;           /* 保证输入内容不覆盖掉下拉按钮 */
+	background: url('../img/arrow.png') no-repeat center right 7px;
+	background-color: #fff;
+}
+.section4-item [type="submit"] {
+	border: none;
+	color: #fff;
+	letter-spacing: 1em;
+	font-family: "微软雅黑";
+	box-sizing: content-box;
+	background: #f66;
+	width: 236px;
+	height: 36px;
+}
+.section4-item--select ul {
+	font-size: 12px;
+	line-height: 28px;
+	background: #ccc;
+	text-align: left;
+	visibility: hidden;    /* 先看不见，在点击时才出现，并且包含1px的外边框 */
+}
+.section4-item--select li {
+	padding-left: 30px;
+ }
+ .section4-item--active ul {    /* 点击输入框的下拉选项 */
+ 	visibility: visible;        
+ }
+ .section4-item--select li:hover {
+ 	background: url('../img/arrow1.png') no-repeat center left 7px;
+ 	background-color: #f66;
+ } 
+
+/* --------------section-5------------------------------ */
+#section-5 {
+	min-width: 1280px;
+	height: 604px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #EDEAEA;
+}
+.section5-container {
+	display: flex;
+	justify-content: center;
+}
+#section-5 .img-wrap {
+	box-sizing: content-box;
+	width: 100%;
+	overflow: hidden;
+	padding: 15px 9px;
+	border: 1px solid #ccc;
+}
+#section-5 img {
+	box-sizing: content-box;
+	max-width: 100%;
+	border-bottom-width: 0;
+	transition: transform 0.4s;
+}
+#section-5 img:hover {
+	transform: scale(1.5);
+}
+#section-5 img:nth-child(2) {
+	border-bottom-width: 1px;
+}
+#section-5 figure {
+	text-align: center;
+}
+#section-5 .message {
+	font-size: 12px;
+	font-family: "微软雅黑";
+	color: #ccc;
+}
+#section-5 .title-2 {
+	font-size: 14px;
+	font-weight: normal;
+	color: #000;
+}
+#section-5 .title-1 {
+	margin-top: 0;
+	font-size: 21px;
+	color: #000;
+	width: 100%;
+	height: 24px;
+	overflow: hidden;
+	text-align: justify;
+	font-weight: normal;
+}
+#section-5 .title-1::after {     /* 单行文字水平居中，需要在后面加一个高度为0的inline-bolck伪元素 */
+	content: "";
+	display: inline-block;
+	height: 0;
+	overflow: hidden;
+	width: 100%;
+}
+
+/* --------------section-6------------------------------ */
+#section-6 {
+	width: 100%;
+	height: 566px;
+	display: flex;
+}
+.section6-left {
+	background: url('../img/bg-3.png') no-repeat;
+	background-size: cover;
+	width: 67%;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+.section6-left h3 {
+	margin: 0;
+	font-weight: normal;
+}
+.section6-left p {
+	font-size: 22px;
+	margin-top: 0;
+}
+.section6-left h3:first-child {
+	font-size: 50px;
+}
+.section6-left h3:nth-child(2) {
+	font-size: 158px;
+}
+.section6-left::after {   /* 利用border制作三角形 */
+	display: block;
+	content: "";
+	height: 0;
+	position: absolute;
+	right: 0;
+	border-style: solid;     /* 制作三角形，设置三个方向的边框为透明即可 */
+	border-width: 15px 24px;
+	border-color: transparent #fff transparent transparent;
+}
+
+.section6-right {
+	width: 33%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.section6-right h3 {
+	font-family: "Microsoft YaHei";
+	font-size: 20px;
+	font-weight: bold;
+}
+.section6-right h3 span {
+	color: #f66;
+}
+.section6-right p {
+	color: #999;
+	font-size: 12px;
+	line-height: 30px;
+	padding: 0 16%;
+}
+.section6-right .btn {
+	color: #c66;
+	margin-top: 32px;
+	transition: background-color 0.4s ease-in-out;
+	transition: color 0.4s ease-in-out;
+}
+.section6-right .btn:hover {
+	background: #c66;
+	color: #fff;
+	border-radius: 3px;
+}
+.section6-right ul {
+	margin-top: 24px;
+	display: flex;
+	justify-content: space-around;
+}
+.section6-right ul li {
+	padding: 7px;
+}
+.section6-right ul input[type='radio'] {
+	-webkit-appearance: none;  /* 去掉浏览器控件（radio、checkbox、select等）的默认样式 */
+	width: 12px;
+	height: 12px;
+	background-color: #fff;
+	box-shadow: 0 0 1px #6C5C5C;   /* 阴影是未选中状态的空心圆边线 */
+	border-radius: 50%;
+	outline: 0;                   /* chrome自带的outline去掉 */
+}
+.section6-right ul input[type='radio']:checked {
+	background: #999;
+	border-radius: 50%;
+}
+
+/* --------------section-5------------------------------ */
+#section-7 {
+	min-width: 1280px;
+	height: 522px;
+	display: flex;
+}
+#section-7 p {
+	margin: 0;
+	line-height: 50px;
+}
+#section-7 > div a {
+	margin-top: 36px;
+}
+#section-7 > div {
+	width: 33.5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+}
+#section-7 > div:last-child {
+	width: 33%;
+	background: url('../img/bg-4.png') no-repeat;
+	background-size: cover;
+}
+#section-7 > div:first-child {
+	background: #f66;
+	color: #fff;
+	position: relative;
+}
+#section-7 > div:first-child a {
+	background: #f66;
+	border-color: #fff;
+	transition: background 0.3s ease-in-out;
+}
+#section-7 > div:first-child a:hover {
+	background: #fff;
+	color: #f66;
+	border-radius: 3px;
+}
+
+#section-7 > div:nth-child(2) {
+	color: #f66;
+	position: relative;
+}
+#section-7 > div:nth-child(2) a {
+	background: #fff;
+	border-color: #f66;
+	transition: background 0.3s ease-in-out;
+}
+#section-7 > div:nth-child(2) a:hover {
+	background: #f66;
+	color: #fff;
+	border-radius: 3px;
+}
+
+
+#section-7 > div span {   /*  横线 */				        
+	display: block;      /* 制作横线，利用绝对定位 */
+	height: 40px;
+	width: 30px;
+}
+#section-7 > div:first-child span {
+	border-top: 3px solid #fff;
+	position: absolute;
+	top: 272px;
+	left: 50%;           /* 50%相对的是容器的宽度 */
+	transform: translateX(-50%);     /* translateX()相对的是元素自身宽度 */
+	transition: width 0.4s ease-in-out;   /* 属性值改变时，以动画的效果触发 */ 
+}
+#section-7 > div:nth-child(2) span {
+	border-top: 3px solid #f66;
+	position: absolute;
+	top: 272px;
+	left: 50%;           /* 50%相对的是容器的宽度 */
+	transform: translateX(-50%);     /* translateX()相对的是元素自身宽度 */
+	transition: width 0.4s ease-in-out;   /* 属性值改变时，以动画的效果触发 */ 
+}
+
+#section-7 > div span:hover {
+	width: 160px;
+}
+
+/* --------------section-8------------------------------ */
+#section-8 {
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+#section-8 h3 {
+	padding: 0 33%;
+	font-size: 20px;
+	line-height: 30px;
+	font-weight: normal;
+}
+#section-8 p {
+	margin: 0;
+	margin-top: 12px;
+	padding: 0 33%;
+	line-height: 18px;
+	font-size: 12px;
+	color: #B3AFAC;
+	text-align: center;
+}
+#section-8 span {
+	display: block;      /* 制作横线，利用绝对定位 */
+	height: 40px;
+	width: 30px;
+	border-top: 3px solid #f66;
+	position: absolute;
+	top: 150px;
+	left: 50%;           /* 50%相对的是容器的宽度 */
+	transform: translateX(-50%);     /* translateX()相对的是元素自身宽度 */
+	transition: width 0.4s ease-in-out;   /* 属性值改变时，以动画的效果触发 */ 
+}
+#section-8 span:hover {
+	width: 200px;
+}
+
+/* --------------section-9------------------------------ */
+#section-9 {
+	min-width: 1280px;
+	height: 448px;
+	width: 100%;
+	overflow: hidden;
+	display: flex;
+}
+#section-9 .left {
+	width: 29%;
+	margin-left: 10.5%;
+	margin-right: 7.7%;
+}
+#section-9 .right {
+	margin-right: 10.5%;
+}
+.section9-message {
+	font-size: 12px;
+	color: #B3AFAC;
+	overflow: hidden;
+	margin-bottom: 16px;
+}
+.section9-message > p:first-child {
+	font-size: 16px;
+	color: #6C5C5C;
+}
+.section9-message > span {
+	float: right;
+}
+
+.section9-inputFrame {
+	outline: 0;
+	width: 46%;
+	height: 37px;
+	border: 1px solid #e3e3e3;
+	/* padding: 0;          去掉默认的padding，否则border-box下输入框会抖动 */
+	box-sizing: content-box;
+	padding: 0 0 0 10px;
+	margin-right: 1.2%;
+	line-height: 39px;
+	background: #E3E3E3;
+	font-size: 12px;
+	color: #B3AFAC;
+	margin-bottom: 14px;
+	border-radius: 3px;
+}
+.section9-inputFrame:focus {
+	background: #fff;
+}
+#section-9 .right textarea {
+	height: 118px;
+	resize: none;
+	width: 95.5%;
+}
+#section-9 .right button {
+	outline: 0;
+	width: 95.5%;
+	height: 37px;
+	border: none;
+	box-sizing: content-box;
+	line-height: 39px;
+	background: #E3E3E3;
+	font-size: 12px;
+	color: #333;
+	margin-bottom: 14px;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: box-shadow 0.4s ease;
+}
+#section-9 .right button:hover {
+	box-shadow: 0 0 4px #333;
+}
+
+/* --------------section-10------------------------------ */
+#section-10 {
+	height: 358px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #33363f;
+	color: #fff;
+}
+#section-10 h3 {
+	font-size: 21px;
+	line-height: 48px;
+	margin: 0;
+	font-weight: normal;
+}
+#section-10 p {
+	text-align: center;
+	font-size: 12px;
+	line-height: 18px;
+}
+.section10-input {
+	border: none;
+	padding: 0;
+	width: 410px;
+	height: 40px;
+	background: #fff;
+	box-sizing: content-box;
+	padding-left: 20px;
+}
+.section10-button {
+	padding: 0;
+	height: 40px;
+	width: 82px;
+	border: none;
+	color: #fff;
+	background: #75757F;
+	cursor: pointer;
+}
+#section-10 p:last-child {
+	margin-top: 36px;
+	margin-bottom: 0;
+	font-size: 30px;
+}
+#section-10 p:last-child i {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	margin: 0;
+	vertical-align: middle;
+	cursor: pointer;
+
+	-webkit-transition: font-size 0.4s ease-in-out;
+    -moz-transition: font-size 0.4s ease-in-out;
+    transition: font-size 0.4s ease-in-out;
+}
+#section-10 p:last-child i:hover {
+	font-size: 40px;
+}
+
+/* --------------footer------------------------------ */
+#footer {
+	height: 58px;
+	background: #30303A;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: #fff;
+}
+#footer a {
+	margin: 0 50px;
+	transition: color 0.6s ease-in-out;
+}
+#footer a:last-child:hover {
+	color: #999;
+}
