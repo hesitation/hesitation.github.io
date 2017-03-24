@@ -1,0 +1,31 @@
+* {
+	font-family: inherit;
+	box-sizing: inherit;
+}
+html {
+	line-height: initial;
+	box-sizing: border-box;
+	font-size: 100px;     /* 1rem = 100px */
+	font-family: "Microsoft YaHei, serif";
+}
+body {
+	font-size: .14rem;
+}
+body, h1, h2, h3, h4, ul, li, p, dl, dt, dd, img,
+header, main, section nav footer, figure, figcaption {
+	margin: 0;
+	padding: 0
+}
+h2, h4 {
+	font-weight: normal;
+}
+img {
+	border: none;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
