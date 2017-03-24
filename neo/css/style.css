@@ -32,6 +32,7 @@
 .header-wrap .left {
 	height: 100%;
 	float: left;
+	margin-left: 80px;
 }
 .header-wrap .header-nav {
 	float: left;
@@ -44,7 +45,7 @@
 .header-wrap .header-nav a {
 	font-size: 1.333em;   /* 兼容IE8 */
 	text-align: center;
-	padding: 0 12px;  
+	padding: 0 15px;  
 	color: #999;
 	display: inline-block;
 }
